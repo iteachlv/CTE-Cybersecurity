@@ -1,6 +1,6 @@
-# Sierra Vista Cybersecurity Program — website
+# CTE Cybersecurity — website
 
-A static site for the SVHS Cybersecurity program: a general program showcase
+A static site for my CTE Cybersecurity program: a general program showcase 
 plus a student resource hub. Plain HTML/CSS/JS — no build step needed, so it
 works with GitHub Pages out of the box.
 
