@@ -1,0 +1,564 @@
+/* =========================================================
+   Sierra Vista Cybersecurity Program — design tokens
+   Concept: the course sequence framed as security clearance
+   tiers on an access badge. Deep slate + teal "systems online"
+   accent, amber for stamped/status marks. Space Grotesk for
+   display, IBM Plex Sans for body, IBM Plex Mono for data/IDs.
+   ========================================================= */
+
+:root {
+  --bg-dark: #0F1720;
+  --surface-dark: #16212C;
+  --surface-dark-2: #1D2B38;
+  --bg-light: #F4F6F5;
+  --surface-light: #FFFFFF;
+
+  --text-on-dark: #E8EDF0;
+  --text-muted-dark: #8FA1AD;
+  --text-on-light: #10161C;
+  --text-muted-light: #4C5A64;
+
+  --accent-teal: #2DD4BF;
+  --accent-teal-dim: #1B8F80;
+  --accent-amber: #F5A623;
+
+  --border-dark: rgba(232, 237, 240, 0.12);
+  --border-light: rgba(16, 22, 28, 0.12);
+
+  --font-display: "Space Grotesk", sans-serif;
+  --font-body: "IBM Plex Sans", sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+
+  --radius-sm: 4px;
+  --radius-md: 10px;
+  --max-width: 1160px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  background: var(--bg-light);
+  color: var(--text-on-light);
+  line-height: 1.55;
+}
+
+img { max-width: 100%; display: block; }
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  margin: 0 0 0.5em 0;
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+}
+
+p { margin: 0 0 1em 0; }
+
+a { color: inherit; }
+
+.wrap {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent-teal-dim);
+}
+
+section[data-theme="dark"] .eyebrow { color: var(--accent-teal); }
+
+/* ---------- Nav ---------- */
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(15, 23, 32, 0.92);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--border-dark);
+}
+
+.site-nav .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+
+.brand {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  color: var(--text-on-dark);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brand .dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--accent-teal);
+  box-shadow: 0 0 0 3px rgba(45, 212, 191, 0.18);
+}
+
+.nav-links {
+  display: flex;
+  gap: 28px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-muted-dark);
+  text-decoration: none;
+  padding-bottom: 4px;
+  border-bottom: 1px solid transparent;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.nav-links a:hover,
+.nav-links a[aria-current="page"] {
+  color: var(--text-on-dark);
+  border-bottom-color: var(--accent-teal);
+}
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: 1px solid var(--border-dark);
+  border-radius: var(--radius-sm);
+  color: var(--text-on-dark);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  padding: 8px 12px;
+}
+
+/* ---------- Sections ---------- */
+section { padding: 88px 0; }
+section[data-theme="dark"] {
+  background: var(--bg-dark);
+  color: var(--text-on-dark);
+}
+section[data-theme="light"] {
+  background: var(--bg-light);
+  color: var(--text-on-light);
+}
+section[data-theme="surface"] {
+  background: var(--surface-light);
+  color: var(--text-on-light);
+}
+
+.section-head {
+  max-width: 640px;
+  margin-bottom: 48px;
+}
+.section-head h2 { font-size: clamp(1.7rem, 3vw, 2.3rem); }
+.section-head p {
+  color: var(--text-muted-dark);
+  font-size: 1.02rem;
+}
+section[data-theme="light"] .section-head p,
+section[data-theme="surface"] .section-head p { color: var(--text-muted-light); }
+
+/* ---------- Hero / Badge ---------- */
+.hero {
+  background:
+    radial-gradient(ellipse at top right, rgba(45,212,191,0.10), transparent 55%),
+    var(--bg-dark);
+  color: var(--text-on-dark);
+  padding: 96px 0 72px;
+  border-bottom: 1px solid var(--border-dark);
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 56px;
+  align-items: center;
+}
+
+.hero h1 {
+  font-size: clamp(2.1rem, 4.4vw, 3.4rem);
+  max-width: 11ch;
+}
+
+.hero .lede {
+  font-size: 1.08rem;
+  color: var(--text-muted-dark);
+  max-width: 46ch;
+}
+
+.hero-ctas {
+  display: flex;
+  gap: 14px;
+  margin-top: 28px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.03em;
+  text-decoration: none;
+  padding: 12px 20px;
+  border-radius: var(--radius-sm);
+  display: inline-block;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+.btn-primary {
+  background: var(--accent-teal);
+  color: #06201C;
+  font-weight: 600;
+}
+.btn-primary:hover { transform: translateY(-1px); background: #4be0ca; }
+.btn-ghost {
+  border: 1px solid var(--border-dark);
+  color: var(--text-on-dark);
+}
+.btn-ghost:hover { border-color: var(--accent-teal); color: var(--accent-teal); }
+
+/* ---------- Clearance badge (signature element) ---------- */
+.badge-card {
+  background: var(--surface-dark);
+  border: 1px solid var(--border-dark);
+  border-radius: var(--radius-md);
+  padding: 26px;
+  position: relative;
+  overflow: hidden;
+}
+
+.badge-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 3px,
+    rgba(45, 212, 191, 0.035) 3px,
+    rgba(45, 212, 191, 0.035) 4px
+  );
+  pointer-events: none;
+}
+
+.badge-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted-dark);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+
+.badge-stamp {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--accent-amber);
+  border: 1px solid var(--accent-amber);
+  border-radius: 3px;
+  padding: 3px 8px;
+  transform: rotate(-4deg);
+  letter-spacing: 0.08em;
+}
+
+.tier-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.tier {
+  display: grid;
+  grid-template-columns: 56px 1fr auto;
+  align-items: center;
+  gap: 14px;
+  padding: 13px 10px;
+  border-radius: var(--radius-sm);
+  position: relative;
+}
+
+.tier + .tier { border-top: 1px dashed var(--border-dark); }
+
+.tier-id {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  color: var(--accent-teal);
+}
+
+.tier-name { font-size: 0.95rem; font-weight: 500; }
+.tier-name span {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--text-muted-dark);
+  font-weight: 400;
+  margin-top: 2px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.tier-status {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--accent-teal);
+  white-space: nowrap;
+}
+.tier-status.pilot { color: var(--accent-amber); }
+
+/* ---------- Stat strip ---------- */
+.stat-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+}
+.stat {
+  border-left: 2px solid var(--accent-teal);
+  padding-left: 16px;
+}
+.stat .num {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 600;
+}
+.stat .label {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  color: var(--text-muted-light);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* ---------- Course cards ---------- */
+.course-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.course-card {
+  background: var(--surface-dark);
+  border: 1px solid var(--border-dark);
+  border-radius: var(--radius-md);
+  padding: 26px;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+.course-card:hover {
+  border-color: var(--accent-teal-dim);
+  transform: translateY(-2px);
+}
+
+.course-card .tag {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--accent-teal);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.course-card h3 { font-size: 1.25rem; margin-top: 8px; }
+.course-card p { color: var(--text-muted-dark); font-size: 0.94rem; }
+
+.course-card ul {
+  margin: 14px 0 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.course-card ul li {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--text-muted-dark);
+  border: 1px solid var(--border-dark);
+  border-radius: 3px;
+  padding: 3px 8px;
+}
+
+/* ---------- Showcase gallery ---------- */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+.gallery-tile {
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-md);
+  border: 1px dashed var(--border-light);
+  background: var(--surface-light);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-align: center;
+  padding: 18px;
+}
+.gallery-tile .icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid var(--border-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted-light);
+}
+.gallery-tile .cap {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted-light);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.gallery-tile .sub {
+  font-size: 0.82rem;
+  color: var(--text-muted-light);
+  max-width: 22ch;
+}
+
+/* ---------- Clubs ---------- */
+.club-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+.club-card {
+  background: var(--surface-light);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 26px;
+}
+.club-card .eyebrow { color: var(--accent-teal-dim); }
+.club-card h3 { font-size: 1.2rem; margin-top: 6px; }
+.club-card p { color: var(--text-muted-light); font-size: 0.95rem; }
+.club-meta {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  color: var(--text-on-light);
+  border-top: 1px solid var(--border-light);
+  margin-top: 16px;
+  padding-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* ---------- Resources page ---------- */
+.res-category {
+  margin-bottom: 56px;
+}
+.res-category h2 {
+  font-size: 1.35rem;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+.res-category h2 .idx {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--accent-teal-dim);
+}
+.res-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  list-style: none;
+  margin: 20px 0 0 0;
+  padding: 0;
+}
+.res-item {
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  padding: 16px 18px;
+  background: var(--surface-light);
+}
+.res-item a {
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 0.98rem;
+  border-bottom: 1px solid transparent;
+}
+.res-item a:hover { border-bottom-color: var(--accent-teal-dim); }
+.res-item p {
+  margin: 6px 0 0 0;
+  font-size: 0.88rem;
+  color: var(--text-muted-light);
+}
+.res-item .edit-flag {
+  display: inline-block;
+  margin-top: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  color: var(--accent-amber);
+  letter-spacing: 0.04em;
+}
+
+/* ---------- Footer ---------- */
+footer {
+  background: var(--bg-dark);
+  color: var(--text-muted-dark);
+  padding: 48px 0;
+  border-top: 1px solid var(--border-dark);
+}
+footer .wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+}
+footer a { color: var(--accent-teal); text-decoration: none; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 860px) {
+  .hero-grid { grid-template-columns: 1fr; }
+  .stat-strip { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  .course-grid, .club-grid, .res-list { grid-template-columns: 1fr; }
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+  .nav-links {
+    position: absolute;
+    top: 64px; left: 0; right: 0;
+    background: var(--bg-dark);
+    flex-direction: column;
+    padding: 16px 24px 24px;
+    gap: 16px;
+    border-bottom: 1px solid var(--border-dark);
+    display: none;
+  }
+  .nav-links.open { display: flex; }
+  .nav-toggle { display: inline-block; }
+}
+
+@media (max-width: 560px) {
+  .gallery-grid { grid-template-columns: 1fr; }
+  section { padding: 64px 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; animation: none !important; }
+}
